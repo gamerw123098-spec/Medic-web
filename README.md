@@ -20,3 +20,11 @@ python manage.py runserver
 ## Настройки при размещении в интернете
 
 Для локального учебного запуска Django создаёт временный ключ автоматически. При размещении задай `DJANGO_SECRET_KEY` в переменных окружения сервера, установи `DJANGO_DEBUG=false` и укажи домен в `DJANGO_ALLOWED_HOSTS`. Не публикуй настоящий ключ в GitHub.
+
+### Render
+
+- Build Command: `pip install -r requirements.txt && python manage.py collectstatic --no-input`
+- Start Command: `gunicorn human_site.wsgi:application --bind 0.0.0.0:$PORT`
+- Environment Variable: `DJANGO_DEBUG=false`
+
+Render автоматически передаёт имя сайта в `RENDER_EXTERNAL_HOSTNAME`; Django добавляет его в разрешённые домены. Для постоянных сессий задай отдельный `DJANGO_SECRET_KEY` в настройках сервиса.
