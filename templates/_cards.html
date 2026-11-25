@@ -1,0 +1,1 @@
+{% for item in items %}<a class="card {{ item.color }}" href="{% url 'detail' item.slug %}"><span class="icon">{{ item.icon }}</span><small>{{ item.tag }}</small><h3>{{ item.title }}</h3><p>{{ item.text }}</p><b class="more">Читать подробнее　→</b></a>{% endfor %}
